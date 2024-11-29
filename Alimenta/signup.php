@@ -1,7 +1,7 @@
 <?php 
 // This script performs an INSERT query to add a record to the users table.
 
-$page_title = 'Register';
+$page_title = 'Sign Up!';
 
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
