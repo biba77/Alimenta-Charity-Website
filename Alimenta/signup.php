@@ -1,7 +1,7 @@
 <?php 
 // This script performs an INSERT query to add a record to the users table.
 
-$page_title = 'Sign Up!';
+$page_title = 'Sign Up';
 
 // Check for form submission:
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		
 			// Print a message:
 			echo '<h1>Thank you!</h1>
-		<p>You are now registered successfully.</p><p><br /></p>';	
+		<p>You now signed up successfully!</p><p><br /></p>';	
 		
 		} else { // If it did not run OK.
 			
@@ -85,8 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 } // End of the main Submit conditional.
 ?>
-<h1>Register</h1>
-<form action="register.php" method="post">
+<h1>Sign Up</h1>
+<form action="signup.php" method="post">
 	<p>First Name: <input type="text" name="first_name" size="15" maxlength="20" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>" /></p>
 	<p>Last Name: <input type="text" name="last_name" size="15" maxlength="20" value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>" /></p>
 	<p>Email Address: <input type="text" name="email" size="20" maxlength="40" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"  /> </p>
