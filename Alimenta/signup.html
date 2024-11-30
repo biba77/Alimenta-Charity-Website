@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Alimenta</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="Alimenta%20Logo.png" alt="Alimenta">
+            <span class="brand-name">Alimenta</span>
+        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Notifications</a>
+            <a href="#">Donations</a>
+            <a href="#">Contact Us</a>
+            <button class="donate-button">Donate Now &gt;</button>
+            <div class="profile">
+                <span>Profile</span>
+            </div>
+        </nav>
+    </header>
+
+<main>
+    <div class="form-container">
+        <h1>Sign Up</h1>
+        <form action="signup.php" method="POST">
+			<div class="form-row">
+	            <div class="form-group">
+	                <label for="first_name">First Name</label>
+	                <input type="text" name="first_name" id="first_name" size="15" maxlength="20" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>" required/>
+	            </div>
+	            <div class="form-group">
+	                <label for="last_name">Last Name</label>
+	                <input type="text" name="last_name" id="last_name" size="15" maxlength="20" value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>" required/>
+	            </div>
+	        </div>
+	            <div class="form-group">
+	                <label for="email">Email Address</label>
+	                <input type="text" name="email" id="email" size="20" maxlength="40" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" required/>
+	            </div>
+	            <div class="form-group">
+	                <label for="pass1">Password</label>
+	                <input type="password" name="pass1" id="pass1" size="10" maxlength="40" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>" required/>
+	            </div>
+	            <div class="form-group">
+	                <label for="pass2">Confirm Password</label>
+	                <input type="password" name="pass2" id="pass2" size="10" maxlength="20" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>" required/>
+	            </div>
+	            <button type="submit" class="submit-button">Sign Up</button>
+	        </form>
+	        <p>Already have an account? <a href="login.html">Login</a></p>
+	    </div>
+	    
+</main>
+<div id="messageModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalMessage"></p>
+        <button id="modalButton" class="home-button">Return to Home</button>
+    </div>
+</div>
+
+<script>
+    function showModal(title, message, isSuccess) {
+        var modal = document.getElementById("messageModal");
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalMessage").innerHTML = message;
+
+        var closeBtn = document.querySelector(".close");
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        var modalButton = document.getElementById("modalButton");
+        modalButton.onclick = function() {
+            if (isSuccess) {
+                window.location.href = "index.html"; // Redirect to homepage for success.
+            } else {
+                modal.style.display = "none"; // Close modal for errors.
+            }
+        };
+
+        modal.style.display = "block";
+    }
+</script>
+
+</body>
+</html>
