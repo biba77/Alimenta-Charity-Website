@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Alimenta</title>
+    <link rel="stylesheet" href="signup.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .main-content {
+		    display: flex;
+		    flex-direction: column;
+		    align-items: center;
+		    justify-content: center
+	    }
+        .greeting-text {
+		    font-size: 32px;
+		    color: #fff; 
+		    margin-bottom: 40px;
+		    text-align: center;
+		    font-weight: bold;
+}
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            margin: 0 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #6b6048;
+            border-bottom: 2px solid #6b6048;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="Alimenta%20Logo.png" alt="Alimenta">
+        <span class="brand-name">Alimenta</span>
+    </div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Notifications</a>
+        <a href="#">Donations</a>
+        <a href="#">Contact Us</a>
+        <button class="donate-button">Donate Now &gt;</button>
+        <div class="profile">
+            <span>Profile</span>
+        </div>
+    </nav>
+</header>
+
+<main class="main-content">
+    <h1 class="greeting-text">Good to see you again</h1>
+    <div class="form-container">
+        <div class="tab-container">
+            <div class="tab active" data-tab="user">USER</div>
+            <div class="tab" data-tab="admin">ADMIN</div>
+        </div>
+
+        <div id="user" class="tab-content active">
+            <form action="login.php" method="POST">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="text" name="email" id="email" size="20" maxlength="40" required>
+                </div>
+                <div class="form-group">
+                    <label for="pass1">Password</label>
+                    <input type="password" name="pass" id="pass" size="10" maxlength="40" required>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="submit-button">Log in</button>
+            </form>
+            <p>Don't have an account? <a href="signup.php">Sign Up</a></p>
+        </div>
+
+        <div id="admin" class="tab-content">
+            <form action="admin_login.php" method="POST">
+                <div class="form-group">
+                    <label for="admin-email">Admin Email</label>
+                    <input type="text" name="admin_email" id="admin-email" size="20" maxlength="40" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-pass">Admin Password</label>
+                    <input type="password" name="admin_pass" id="admin-pass" size="10" maxlength="40" required>
+                </div>
+                <div class="forgot-password">
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="submit-button">Admin Log in</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
+
+<!-- Modal for displaying error or success messages -->
+<div id="messageModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalMessage"></p>
+        <button id="modalButton" class="home-button">Return to Home</button>
+        <button id="retryButton" class="home-button" style="display:none;">Try Again</button>
+    </div>
+</div>
+
+<script>
+	    // Tab switching logic
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+
+            this.classList.add('active');
+            document.getElementById(this.dataset.tab).classList.add('active');
+        });
+    });
+    
+    function showModal(title, message, isSuccess) {
+        var modal = document.getElementById("messageModal");
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalMessage").innerHTML = message;
+
+        var retryButton = document.getElementById("retryButton");
+        var modalButton = document.getElementById("modalButton");
+
+        // For success modal
+        if (isSuccess) {
+            retryButton.style.display = "none"; // Hide retry button
+            modalButton.style.display = "none"; // Hide modal button (as it's not needed)
+            
+            // Set a 10s timer to automatically redirect to the homepage
+            setTimeout(function() {
+                window.location.href = "index.html"; // Redirect after 5s
+            }, 5000);
+        } else { // For error modal
+            retryButton.style.display = "inline-block"; // Show retry button
+            modalButton.style.display = "none"; // Hide return to home button
+
+            retryButton.onclick = function() {
+                window.location.href = "login.php"; // Reload the login page
+            };
+        }
+
+        modal.style.display = "block"; // Show the modal
+    }
+</script>
+
+</body>
+</html>
