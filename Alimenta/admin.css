@@ -1,10 +1,12 @@
+/* General Reset */
 	body {
-	    font-family: Arial, sans-serif;
 	    margin: 0;
 	    padding: 0;
-	    background-color: #f4f4f4;
+	    font-family: Arial, sans-serif;
+	    background-color: #8A8D56;
 	}
 	
+	/* Header Section */
 	header {
 	    display: flex;
 	    align-items: center;
@@ -136,45 +138,91 @@
 	    display: flex; /* Show dropdown menu on hover */
 	}
 	
-	/* Main content styles */
-	main {
-	    background-color: #8A8D56;
-	    min-height: 80vh;
-	    padding: 40px;
+	/* Users Section */
+	.users {
+	    padding: 20px;
 	}
 	
-	.notification-container {
-	    background-color: #8A8D56;
-	    padding: 20px;
-	    border-radius: 10px;
-	    text-align: center;
+	.users h2 {
+	    font-size: 24px;
+	    margin-bottom: 15px;
+	    margin-left: 90px;
 	}
 	
-	.notification-card {
-	    background-color: #f6e8d6;
+	.volunteers {
 	    padding: 20px;
-	    margin: 20px auto;
-	    border-radius: 10px;
-	    box-shadow: 0 9px 14px rgba(0, 0, 0, 0.1);
-	    width: 60%;
+	}
+	
+	.volunteers h2 {
+	    font-size: 24px;
+	    margin-bottom: 15px;
+	    margin-left: 90px;
+	}
+	
+	.fundraisers {
+	    padding: 20px;
+	}
+	
+	.fundraisers h2 {
+	    font-size: 24px;
+	    margin-bottom: 15px;
+	    margin-left: 90px;
+	}
+	
+	.donations {
+	    padding: 20px;
+	}
+	
+	.donations h2 {
+	    font-size: 24px;
+	    margin-bottom: 15px;
+	    margin-left: 90px;
+	}
+	
+	table {
+	    width: 90%;
+	    margin: 20px auto; 
+	    border-collapse: collapse; /* Remove spacing between cells */
+	    background-color: #f7e2cc; 
+	    color: #333; 
+	    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);	
+	}
+	
+	table thead th {
+	    background-color: #8A8D56;
+	    padding: 10px;
 	    text-align: left;
-	}
-	
-	/* Styling for Notifications heading */
-	.notification-container h1 {
+	    border: 1px solid #ccc;
 	    color: white;
-	    text-align: center;
-	    font-size: 48px;
-	    margin-bottom: 30px;
-	    font-weight: bold;
-	}
-		
-	.notification-card h2 {
-	    color: #333;
-	    margin-bottom: 10px;
 	}
 	
-	.notification-card p {
-	    color: #555;
-	    font-size: 16px;
+	table tbody td {
+	    padding: 10px;
+	    border: 1px solid #ccc;
+	    background-color: floralwhite;
+	}
+	
+	/* Statistics Section */
+	.statistics {
+	    flex: 1; /* Take 1 part of the available space */
+	    display: flex;
+	    flex-direction: row;
+	    width: auto;
+	    margin: 50px 60px;
+	    /*grid-template-columns: repeat(1, 1fr); /* Single column layout */
+	    /*gap: 20px; */
+	}
+	
+	.stat {
+	    background-color: #d0c6a6;
+	    padding: 20px;
+	    border-radius: 8px;
+	    text-align: center;
+	    width: 100%;
+	    font-size: 24px;
+	}
+	
+	.stat h3 {
+	    margin-bottom: 10px;
+	    font-size: 20px;
 	}

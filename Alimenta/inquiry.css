@@ -6,57 +6,178 @@
 	}
 	
 	header {
-	    background-color: #d9cdbf;
 	    display: flex;
 	    align-items: center;
 	    justify-content: space-between;
-	    padding: 10px 20px;
+	    background-color: #f7e2cc;
+	    padding: 10px 30px;
+	    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 	
-	.logo {
+	.logo-container {
 	    display: flex;
-	    flex-direction: column;
+	    align-items: center;/* Center-align the items */
+	}
+	
+	.logo img {
+	    height: 100px;
+	}
+	
+	.brand-name {
+	    font-size: 27px;
+	    font-weight: bold;
+	    margin-left: 10px;
+	    color: #6b6048;
+	}
+	
+	nav {
+	    display: flex;
 	    align-items: center;
+	    justify-content: space-between;
+	    padding: 20px 50px;
+	    font-size: 24px;
 	}
 	
 	nav a {
-	    margin: 0 10px;
 	    text-decoration: none;
-	    color: #333;
-	    font-size: 25px;
+	    margin: 0 15px;
+	    padding: 20px 20px;
+	    color: #6b6048;
+	    font-weight: bold;
+	    font-size: 24px;
+	    border: 2px solid transparent; /* Box for buttons */
+		border-radius: 8px; /* Rounded corners */
+		transition: all 0.2s ease;
 	}
 	
-	nav a.active {
-	    background-color: #6b6048;
+	
+	nav a:hover {
 	    color: white;
-	    padding: 5px 10px;
-	    border-radius: 5px;
+	    background-color: #8A8D56; 
+	    border-color: #8A8D56; 
 	}
 	
-	main {
-	    display: flex;
-	    justify-content: center;
+	nav .donate-button {
+            margin-left: 15px;	
+            margin-right: 15px;
+	    background-color: #8A8D56;
+	    border: none;
+	    padding: 20px 20px;
+	    color: white;
+            font-weight: bold;
+	    font-size: 24px;
+	    border-radius: 20px;
+	    cursor: pointer;
+	}
+	
+	nav .donate-button:hover {
+	    background-color: #6b6048;
+	}
+	
+	/* Profile Button with Dropdown */
+	.profile-container {
+	    position: relative; /* Ensure dropdown is positioned relative to this container */
+	    margin-left: auto;
+	    padding: 0;
+	}
+	
+	.profile {
+	    padding: 20px 20px;
+	    font-size: 24px;
+	    font-weight: bold;
+	    color: #6b6048;
+	    border: 2px solid transparent;
+		border-radius: 8px;
+		cursor: pointer;
+		background-color: transparent;
+	}
+	
+	.profile:hover {
+	    background-color: #8A8D56;
+	    color: white;
+	    border-color: #8A8D56;
+	    transition: all 0.2s ease;
+	}
+	
+	.dropdown-menu {
+	    position: absolute;
+	    top: 100%; /* Position below the profile button */
+	    right: 0;
+	    background-color: #f7e2cc;
+	    color: white;
+	    border-radius: 8px;
+	    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
 	    align-items: center;
-	    height: 80vh;
-	    background-color: #a4a180;
+	    display: none; /* Hidden by default */
+	    flex-direction: column;
+	    min-width: 200px;
+	    z-index: 1000;
+	    overflow: hidden;
+	}
+	
+	.dropdown-menu a {
+	    padding: 15px 20px;
+	    text-decoration: none;
+	    color: #6b6048;
+	    font-size: 18px;
+	    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	    transition: background-color 0.3s ease;
+	}
+	
+	.dropdown-menu a:last-child {
+	    border-bottom: none; /* Remove border for last item */
+	}
+	
+	.dropdown-menu a:hover {
+	    background-color: #6b6048;
+	}
+	
+	.profile-container:hover .dropdown-menu {
+	    display: flex; /* Show dropdown menu on hover */
+	}
+	
+	/* Main content layout */
+	.content-container {
+	    display: flex;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
+	    align-items: flex-start;
+	    padding: 30px;
+	    gap: 20px;
+	    background-color:  #8A8D56;
 	}
 	
 	.form-container {
-	    background-color: #f6e8d6;
+	    flex: 1;
+	    min-width: 45%;
+	    background-color: #f7e2cc; 
 	    padding: 30px;
 	    border-radius: 10px;
-	    box-shadow: 0 9px 20px rgba(0, 0, 0, 0.15);
-	    width: 50%;
+	    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
 	}
 	
-	h2 {
+	.contact-us-container {
+	    flex: 1;
+	    min-width: 45%;
+	    background-color: #f7e2cc; 
+	    padding: 30px;
+	    border-radius: 10px;
+	    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+	}
+	
+	/* Prevent overflow on smaller screens */
+	@media (max-width: 768px) {
+	    .form-container, 
+	    .contact-us-container {
+	        flex: none;
+	        min-width: 100%;
+	        margin-bottom: 20px;
+	    }
+	}
+	
+	h1 {
 	    text-align: center;
 	    color: #333;
-	}
-	
-	p {
-	    text-align: center;
-	    font-style: italic;
 	}
 	
 	.form-group {
@@ -69,7 +190,8 @@
 	    font-weight: bold;
 	}
 	
-	input, textarea {
+	input,
+	textarea {
 	    width: 100%;
 	    padding: 10px;
 	    border: 1px solid #ccc;
@@ -90,3 +212,92 @@
 	.submit-button:hover {
 	    background-color: #5a4f3a;
 	}
+	
+	/* Contact Us Text and Icon Styling */
+	.contact-us-container ul {
+	    list-style: none;
+	    padding: 0;
+	    margin: 0;
+	    font-size: 1rem;
+	    line-height: 1.8;
+	    color: #4f4f4f; 
+	}
+	
+	.contact-us-container ul li {
+	    display: flex;
+	    align-items: center;
+	    gap: 10px;
+	    margin-bottom: 10px;
+	}
+	
+	/* Icons for Email, Phone, and Address */
+	.contact-us-container ul li i {
+	    font-size: 1.2rem;
+	    color: #8c6d3d; 
+	}
+	
+	/* Prevent overflow on smaller screens */
+	@media (max-width: 768px) {
+	    .form-container, 
+	    .contact-us-container {
+	        flex: none;
+	        min-width: 100%; 
+	        margin-bottom: 20px;
+	    }
+	}
+	
+	button {
+	    background-color: #8c6d3d; 
+	    color: white;
+	    padding: 10px 20px;
+	    border: none;
+	    border-radius: 5px;
+	    font-size: 1rem;
+	    cursor: pointer;
+	    transition: background-color 0.3s ease;
+	}
+	
+	button:hover {
+	    background-color: #70562e; 
+	}
+	
+	.modal {
+	    display: none; 
+	    position: fixed; 
+	    z-index: 1; 
+	    left: 0;
+	    top: 0;
+	    width: 100%; 
+	    height: 100%; 
+	    overflow: auto; 
+	    background-color: rgba(0, 0, 0, 0.4); 
+	}
+	
+	/* Modal content */
+	.modal-content {
+	    background-color: #fefefe;
+	    margin: 15% auto;
+	    padding: 20px;
+	    border: 1px solid #888;
+	    width: 40%; 
+	    text-align: center;
+	    border-radius: 10px;
+	    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+	}
+	
+	/* Modal close button */
+	.modal-content button {
+	    background-color: #6b6048;
+	    color: white;
+	    padding: 10px 20px;
+	    border: none;
+	    border-radius: 5px;
+	    cursor: pointer;
+	    font-size: 16px;
+	    margin-top: 15px;
+	}
+	
+	.modal-content button:hover {
+	    background-color: #5a4f3a;
+	}
+

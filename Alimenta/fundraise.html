@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraise - Alimenta</title>
+    <link rel="stylesheet" href="fundraise.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <div class="logo">
+            <img src="Alimenta Logo.png" alt="Alimenta Logo">
+        </div>
+        <span class="brand-name">Alimenta</span>
+    </div>
+    <nav>
+        <a href="homepage.php">Home</a>
+        <a href="notifications.php">Notifications</a>
+        <a href="donations.php">Donations</a>
+        <a href="inquiry.php">Contact Us</a>
+        <button class="donate-button" onclick="window.location.href='donations.php'">Donate Now ></button>
+        <div class="profile-container">
+            <button class="profile">
+                <i class="fas fa-user-circle"></i> Profile
+            </button>
+            <div class="dropdown-menu">
+		        <a href="login.php" style = "width: 100%; text-align: center;">Login</a>
+		        <a href="signup.php" style = "width: 100%; text-align: center;">Signup</a>
+		    </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="fundraise-container">
+        <form class="fundraise-form" action="fundraise.php" method="post">
+            <h2>Fundraiser Form</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="title">Fundraiser Title</label>
+                    <input type="text" id="title" name="title" placeholder="Enter fundraiser title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Fundraiser Description</label>
+                    <textarea id="description" name="description" placeholder="A detailed explanation of the fundraiser, its purpose, and how the funds will be used" rows="4" required></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="organizer">Organizer Name</label>
+                    <input type="text" id="organizer" name="organizer" placeholder="Enter organizer name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Contact Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter contact email" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" name="amount" placeholder="Desired amount to raise in RM" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="sdate" name="sdate" placeholder="Enter start date" required>
+                </div>
+                <div class="form-group">
+                    <label for="end-date">End Date</label>
+                    <input type="date" id="edate" name="edate" placeholder="Enter end date" required>
+                </div>
+            </div>
+            <div class="form-row">
+				<div class="form-group">
+                    <label for="type">Fundraiser Type</label>
+                    <input type="text" id="type" name="type" placeholder="e.g., Event, Online Campaign" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Address, city, and country" required>
+                </div>
+            </div>
+            <div>
+			<div class="terms-group">
+			    <input type="checkbox" id="terms" name="terms" required>
+			    <label for="terms">
+			        I have read and agreed with the 
+			        <span class="terms">Terms & Conditions</span>
+			    </label>
+			</div>
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+</main>
+
+
+</body>
+</html>

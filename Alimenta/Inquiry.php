@@ -1,100 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inquiry Form - Alimenta</title>
-    <link rel="stylesheet" href="inquiry.css">
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="Alimenta%20Logo.png" alt="Alimenta">
-            <span class="brand-name">Alimenta</span>
-        </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Notifications</a>
-            <a href="#">Donations</a>
-            <a href="#" class="active">Contact Us</a>
-            <button class="donate-button">Donate Now &gt;</button>
-            <div class="profile">
-                <span>Profile</span>
-            </div>
-        </nav>
-    </header>
+<?php 
+$page_title = 'Contact Us';
+include('inquiry.html');
 
+// Check for form submission:
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-<main>
-    <div class="form-container">
-        <h2>Inquiry Form</h2>
-        <p>We will get back to you soon!</p>
-        <form id="inquiryForm" method="POST">
-            <div class="form-group">
-                <label for="first_name">First Name</label>
-                <input type="text" id="first_name" name="first_name" required>
-            </div>
-            <div class="form-group">
-                <label for="last_name">Last Name</label>
-                <input type="text" id="last_name" name="last_name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit" class="submit-button">Send Inquiry</button>
-        </form>
-    </div>
-</main>
+    require ('mysqli_connect.php'); // Connect to the database.
+    $errors = array(); // Initialize an error array.
 
-<!-- JavaScript Validation -->
-<script>
-    document.getElementById("inquiryForm").addEventListener("submit", function(event) {
-        let firstName = document.getElementById("first_name").value.trim();
-        let email = document.getElementById("email").value.trim();
-
-        if (firstName === "" || email === "") {
-            alert("Please fill in all required fields.");
-            event.preventDefault();
-        }
-    });
-</script>
-
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $message = $_POST['message'];
-
-    // Database connection setup
-    $conn = new mysqli('localhost', 'username', 'password', 'alimentadb');
-
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $sql = "INSERT INTO inquiries (first_name, last_name, email, phone, message)
-            VALUES ('$first_name', '$last_name', '$email', '$phone', '$message')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Your inquiry has been submitted successfully!');</script>";
+    // Validate form inputs (same as before)
+    if (empty($_POST['first_name'])) {
+        $errors[] = 'You forgot to enter your first name.';
     } else {
-        echo "<script>alert('Error: " . $sql . " \\n" . $conn->error . "');</script>";
+        $fn = mysqli_real_escape_string($dbc, trim($_POST['first_name']));
     }
 
-    $conn->close();
+    if (empty($_POST['last_name'])) {
+        $errors[] = 'You forgot to enter your last name.';
+    } else {
+        $ln = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
+    }
+
+    if (empty($_POST['email'])) {
+        $errors[] = 'You forgot to enter your email address.';
+    } else {
+        $e = mysqli_real_escape_string($dbc, trim($_POST['email']));
+    }
+
+    if (empty($_POST['phone_number'])) {
+        $errors[] = 'You forgot to enter your phone number.';
+    } else {
+        $phone = mysqli_real_escape_string($dbc, trim($_POST['phone_number']));
+    }
+
+    if (empty($_POST['message'])) {
+        $errors[] = 'You forgot to enter your message.';
+    } else {
+        $message = mysqli_real_escape_string($dbc, trim($_POST['message']));
+    }
+
+    if (empty($errors)) { // If everything is OK.
+        $q = "INSERT INTO inquiries (first_name, last_name, email, phone_number, message, submitted_at) 
+              VALUES ('$fn', '$ln', '$e', '$phone', '$message', NOW())";
+        $r = @mysqli_query($dbc, $q); // Run the query.
+
+        if ($r) { // If it ran OK.
+            // Success modal with Close option
+            echo '
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    showModal(
+                        "Success!", 
+                        "Your inquiry has been submitted successfully!", 
+                        true,
+                        "Close",
+                        "inquiry.php" // Redirect to refreshed page
+                    );
+                });
+            </script>';
+        
+        } else { 
+            // System error
+            echo '<h1>System Error</h1>
+            <p class="error">Your inquiry could not be submitted due to a system error. We apologize for any inconvenience.</p>'; 
+            echo '<p>' . mysqli_error($dbc) . '<br /><br />Query: ' . $q . '</p>';
+        }
+
+    } else { 
+        // Error modal with Try Again option
+        $errorList = implode('<br>', $errors);
+        echo '
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                showModal(
+                    "Error!", 
+                    "' . $errorList . '", 
+                    false,
+                    "Try Again",
+                    "" // Stay on the same page
+                );
+            });
+        </script>';
+    }
+
+    mysqli_close($dbc); // Close the database connection.
 }
 ?>
-
-</body>
-</html>

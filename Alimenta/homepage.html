@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - Alimenta</title>
+    <link rel="stylesheet" href="homepage.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <div class="logo">
+            <img src="Alimenta Logo.png" alt="Alimenta Logo">
+        </div>
+        <span class="brand-name">Alimenta</span>
+    </div>
+    <nav>
+        <a href="homepage.php">Home</a>
+        <a href="notifications.php">Notifications</a>
+        <a href="volunteer.php">Volunteer</a>
+        <a href="inquiry.php">Contact Us</a>
+        <button class="donate-button" onclick="window.location.href='donations.php'">Donate Now ></button>
+        <div class="profile-container">
+            <button class="profile">
+                <i class="fas fa-user-circle"></i> Profile
+            </button>
+            <div class="dropdown-menu">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="account.php" style="width: 100%; text-align: center;">Account</a>
+            <a href="logout.php" style="width: 100%; text-align: center;">Logout</a>
+        <?php else: ?>
+            <a href="login.php" style="width: 100%; text-align: center;">Login</a>
+            <a href="signup.php" style="width: 100%; text-align: center;">Signup</a>
+        <?php endif; ?>
+		</div>
+        </div>
+    </nav>
+</header>
+
+<section class="main-content">
+    <div class="left-content">
+        <h1>Nourish the Future, One Meal at a Time</h1>
+        <p>Passionate About Giving Back?<br> Register Now and Help Us Fight Hunger!</p>
+        <div class="button-container">
+            <button class="donate-now" onclick="window.location.href='donations.php'">Donate Now</button>
+            <button class="volunteer"onclick="window.location.href='volunteer.php'">Volunteer</button>
+        </div>
+    </div>
+    <div class="right-content">
+        <img src="child-eating.png" alt="Child Eating">
+    </div>
+</section>
+
+<section class="statistics">
+    <div class="text-content">
+        <h2>We Are Helping All Over South East Asia</h2>
+        <p>Alimenta is committed to alleviating hunger by providing essential meals to individuals and families in need. With a network spanning South East Asia, we have impacted thousands of lives through meal distribution, community programs, and volunteer-driven initiatives.</p>
+    </div>
+    <div class="stats-container">
+        <div class="stats-left">
+            <div class="stat">
+                <h3>825,795</h3>
+                <p>People Fed in 2024</p>
+            </div>
+            <div class="stat">
+                <h3>1,753,815</h3>
+                <p>Meals Distributed in 2024</p>
+            </div>
+        </div>
+        <div class="stats-right">
+            <div class="stat">
+                <h3>RM2,489,451</h3>
+                <p>Fund Raised for Hunger Relief</p>
+            </div>
+            <div class="stat">
+                <h3>11,563</h3>
+                <p>Volunteers Engaged in 2024</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="call-to-action">
+    <h2>Help End Hunger Today</h2>
+    <div class="cta-container">
+        <div class="cta-box">
+            <h3>Give Today</h3>
+            <p>RM10 can help provide 5 meals</p>
+            <button onclick="window.location.href='donations.php'">Donate now</button>
+        </div>
+        <div class="cta-box">
+            <h3>Give Monthly</h3>
+            <p>Join our Hunger Council with a monthly gift</p>
+            <button class="donate-btn" onclick="window.location.href='donations.php'">Donate Now </button>
+        </div>
+        <div class="cta-box">
+            <h3>Fundraise</h3>
+            <p>Start a fundraiser and inspire others to give</p>
+            <button onclick="window.location.href='fundraise.php'">Learn More</button>
+        </div>
+        <div class="cta-box">
+            <h3>Volunteer</h3>
+            <p>Give back to your community</p>
+            <button onclick="window.location.href='volunteer.php'">Get Started</button>
+        </div>
+    </div>
+</section>
+
+<section class="donation-section">
+    <div class="donation-content">
+        <div class="donation-text">
+            <h2>Providing Daily Nourishment Across Cambodia</h2>
+            <p>Through focused efforts, Alimenta ensures that nutritious meals reach children and families in underserved areas. Every contribution brings us closer to a hunger-free community.</p>
+            <div class="progress-bar">
+                <div class="raised-info">
+                    <p>Raised</p>
+                    <h3>RM60,452</h3>
+                </div>
+                <div class="bar">
+                    <div class="filled"></div>
+                </div>
+                <div class="goal-info">
+                    <p>Goal</p>
+                    <h3>RM100,000</h3>
+                </div>
+            </div>
+        </div>
+        <div class="donation-options">
+            <div class="input-box">
+                <label for="amount">RM</label>
+                <input type="text" id="amount" placeholder="150">
+            </div>
+            <div class="amount-buttons">
+                <button onclick="setAmount(10)">RM10</button>
+		        <button onclick="setAmount(20)">RM20</button>
+		        <button onclick="setAmount(50)">RM50</button>
+		        <button onclick="setAmount(100)">RM100</button>
+		        <button onclick="setAmount(150)">RM150</button>
+		        <button onclick="setAmount(200)">RM200</button>
+		        <button onclick="setAmount(250)">RM250</button>
+		        <button onclick="setAmount(300)">RM300</button>
+            </div>
+            <button class="donate-btn" onclick="window.location.href='donations.php'">Donate Now ></button>
+        </div>
+        <script>
+		    // Function to update the input field when an amount button is clicked
+		    function setAmount(amount) {
+		        const amountInput = document.getElementById("amount");
+		        amountInput.value = amount; // Set the input box value to the clicked amount
+		    }
+		
+		    // Function to handle donation submission
+		    function submitDonation() {
+		        const amountInput = document.getElementById("amount").value;
+		
+		        if (amountInput) {
+		            // Redirect to donations.php with the amount as a query parameter
+		            window.location.href = `donations.php?amount=${amountInput}`;
+		        } else {
+		            alert("Please enter or select an amount to donate.");
+		        }
+		    }
+		</script>
+    </div>
+</section>
+
+<section class="about-us-section">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>Alimenta is a non-profit organization dedicated to eradicating hunger through innovative programs and community support initiatives.</p>
+
+        <div class="about-content">
+            <div class="about-column">
+                <h3>Mission and Vision</h3>
+                <p>
+                    Our mission is to eliminate hunger by providing meals, resources, and hope to individuals and families in need. Our vision is to create a world where no one goes to bed hungry.
+                </p>
+                <img src="image1.png" alt="Mission and Vision">
+            </div>
+
+            <div class="about-column">
+                <h3>Our Story</h3>
+                <p>
+                    Founded in 2018, Alimenta was a small community project in Malaysia and has since grown to serve communities across South East Asia. Our efforts are driven by the belief that hunger is a solvable problem.
+                </p>
+                <img src="image2.png" alt="Our Story">
+            </div>
+
+            <div class="about-column">
+                <h3>Our Team</h3>
+                <p>
+                    Our team consists of passionate individuals, including volunteers, donors, and staff, all united by a common goal: to end hunger and make a lasting impact in the communities we serve.
+                </p>
+                <img src="image3.png" alt="Our Team">
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer-section">
+    <div class="social-media">
+        <div class="social-left">
+            <p>Follow us on:</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div class="social-right">
+            <p>Donation Changes Their Lives</p>
+            <p><strong>Who Are Poor And Hungry</strong></p>
+        </div>
+    </div>
+
+    <div class="footer-content">
+        <div class="footer-column alimenta">
+            <h3>Alimenta</h3>
+            <p>
+                Alimenta is dedicated to eradicating hunger and improving the lives of those in need. 
+                Through community-driven initiatives, we aim to provide nutritious meals, 
+                resources, and support to underprivileged individuals worldwide. Together, 
+                we can create a world where no one goes to bed hungry.
+            </p>
+        </div>
+        <div class="footer-column contact">
+            <h3>Contact Information</h3>
+            <p>12, Jalan Tun Perak, 50050 Kuala Lumpur, Malaysia</p>
+            <p>+60 9-5678 5432</p>
+            <p>alimentagmail.com</p>
+        </div>
+        <div class="footer-column resources">
+            <h3>Resources</h3>
+            <ul>
+                <li>How to Get Involved</li>
+                <li>Volunteer Opportunities</li>
+                <li>Community Support Programs</li>
+                <li>Educational Resources</li>
+                <li>Annual Impact Report</li>
+            </ul>
+        </div>
+        <div class="footer-column quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Our Mission</a></li>
+                <li><a href="#">Donate Now</a></li>
+                <li><a href="#">Success Stories</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+	
+
+</body>
+</html>

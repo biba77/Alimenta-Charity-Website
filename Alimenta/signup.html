@@ -7,23 +7,39 @@
     <link rel="stylesheet" href="signup.css">
 </head>
 <body>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
 
-    <header>
+<header>
+    <div class="logo-container">
         <div class="logo">
-            <img src="Alimenta%20Logo.png" alt="Alimenta">
-            <span class="brand-name">Alimenta</span>
+            <img src="Alimenta Logo.png" alt="Alimenta Logo">
         </div>
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Notifications</a>
-            <a href="#">Donations</a>
-            <a href="#">Contact Us</a>
-            <button class="donate-button">Donate Now &gt;</button>
-            <div class="profile">
-                <span>Profile</span>
-            </div>
-        </nav>
-    </header>
+        <span class="brand-name">Alimenta</span>
+    </div>
+    <nav>
+        <a href="homepage.php">Home</a>
+        <a href="notifications.php">Notifications</a>
+        <a href="volunteer.php">Volunteer</a>
+        <a href="inquiry.php">Contact Us</a>
+        <button class="donate-button" onclick="window.location.href='donations.php'">Donate Now ></button>
+        <div class="profile-container">
+            <button class="profile">
+                <i class="fas fa-user-circle"></i> Profile
+            </button>
+            <div class="dropdown-menu">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="account.php" style="width: 100%; text-align: center;">Account</a>
+            <a href="logout.php" style="width: 100%; text-align: center;">Logout</a>
+        <?php else: ?>
+            <a href="login.php" style="width: 100%; text-align: center;">Login</a>
+            <a href="signup.php" style="width: 100%; text-align: center;">Signup</a>
+        <?php endif; ?>
+		    </div>
+        </div>
+    </nav>
+</header> 
 
 <main>
     <div class="form-container">
@@ -53,7 +69,7 @@
 	            </div>
 	            <button type="submit" class="submit-button">Sign Up</button>
 	        </form>
-	        <p>Already have an account? <a href="login.html">Login</a></p>
+	        <p>Already have an account? <a href="login.php">Login</a></p>
 	    </div>
 	    
 </main>
@@ -62,7 +78,7 @@
         <span class="close">&times;</span>
         <h2 id="modalTitle"></h2>
         <p id="modalMessage"></p>
-        <button id="modalButton" class="home-button">Return to Home</button>
+        <button id="modalButton" class="home-button">Login</button>
     </div>
 </div>
 
@@ -80,7 +96,7 @@
         var modalButton = document.getElementById("modalButton");
         modalButton.onclick = function() {
             if (isSuccess) {
-                window.location.href = "index.html"; // Redirect to homepage for success.
+                window.location.href = "login.html"; // Redirect to homepage for success.
             } else {
                 modal.style.display = "none"; // Close modal for errors.
             }

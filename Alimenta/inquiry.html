@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Alimenta</title>
+    <link rel="stylesheet" href="inquiry.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <div class="logo">
+            <img src="Alimenta Logo.png" alt="Alimenta Logo">
+        </div>
+        <span class="brand-name">Alimenta</span>
+    </div>
+    <nav>
+        <a href="homepage.php">Home</a>
+        <a href="notifications.php">Notifications</a>
+        <a href="volunteer.php">Volunteer</a>
+        <a href="inquiry.php">Contact Us</a>
+        <button class="donate-button" onclick="window.location.href='donations.php'">Donate Now ></button>
+        <div class="profile-container">
+            <button class="profile">
+                <i class="fas fa-user-circle"></i> Profile
+            </button>
+            <div class="dropdown-menu">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="account.php" style="width: 100%; text-align: center;">Account</a>
+            <a href="logout.php" style="width: 100%; text-align: center;">Logout</a>
+        <?php else: ?>
+            <a href="login.php" style="width: 100%; text-align: center;">Login</a>
+            <a href="signup.php" style="width: 100%; text-align: center;">Signup</a>
+        <?php endif; ?>
+		    </div>
+        </div>
+    </nav>
+</header>
+
+    <main>
+        <div class="content-container">
+            <!-- Inquiry Form -->
+            <div class="form-container">
+                <h1>Inquiry Form</h1>
+                <form action="inquiry.php" method="POST">
+                    <div class="form-group">
+                        <label for="first_name">First Name</label>
+                        <input type="text" id="first_name" name="first_name" 
+                               value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" id="last_name" name="last_name" 
+                               value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" 
+                               value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone_number">Phone Number</label>
+                        <input type="tel" id="phone_number" name="phone_number" 
+                               value="<?php if (isset($_POST['phone_number'])) echo $_POST['phone_number']; ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required><?php 
+                            if (isset($_POST['message'])) echo $_POST['message']; ?></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Inquiry</button>
+                </form>
+            </div>
+
+            <!-- Contact Us Section -->
+            <div class="contact-us-container">
+                <h1>Contact Us</h1>
+                <p>Have questions or need support? Feel free to reach out to us:</p>
+                <ul>
+				    <li><img src="email_icon.png" alt="Email Icon" style="width: 20px; height: 20px;"> alimenta@gmail.com</li>
+				    <li><img src="phone_icon.png" alt="Phone Icon" style="width: 20px; height: 20px;"> +60 3-9876 5432</li>
+				    <li><img src="location_icon.png" alt="Address Icon" style="width: 20px; height: 20px;"> 12, Jalan Tun Perak, 50050 Kuala Lumpur, Malaysia</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+		<div id="customModal" class="modal" style="display: none;">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		            <h4 class="modal-title"></h4>
+		        </div>
+		        <div class="modal-body"></div>
+		        <div class="modal-footer">
+		            <button type="button" id="modalButton" class="btn"></button>
+		        </div>
+		    </div>
+		</div>
+    <script>
+        function showModal(title, message, isSuccess, buttonText, redirectUrl) {
+            const modal = document.getElementById('customModal');
+            modal.querySelector('.modal-title').innerText = title;
+            modal.querySelector('.modal-body').innerHTML = message;
+            const button = modal.querySelector('#modalButton');
+
+            button.innerText = buttonText;
+
+            button.onclick = function () {
+                if (redirectUrl) {
+                    window.location.href = redirectUrl;
+                } else {
+                    modal.style.display = 'none';
+                }
+            };
+
+            modal.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

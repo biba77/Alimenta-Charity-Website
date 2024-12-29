@@ -1,10 +1,12 @@
+	/* General Reset */
 	body {
-	    font-family: Arial, sans-serif;
 	    margin: 0;
 	    padding: 0;
-	    background-color: #f4f4f4;
+	    font-family: Arial, sans-serif;
+	    background-color: #eae8dc;
 	}
 	
+	/* Header Section */
 	header {
 	    display: flex;
 	    align-items: center;
@@ -136,45 +138,147 @@
 	    display: flex; /* Show dropdown menu on hover */
 	}
 	
-	/* Main content styles */
-	main {
-	    background-color: #8A8D56;
-	    min-height: 80vh;
-	    padding: 40px;
+	/* Main Donation Section */
+	.donation-section {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    padding: 35px;
+	    background: url('donationsbg.png') no-repeat center center/cover;
+	    color: white;
 	}
 	
-	.notification-container {
-	    background-color: #8A8D56;
+	.donation-info {
+	    flex: 1;
 	    padding: 20px;
-	    border-radius: 10px;
-	    text-align: center;
+	    font-size: 60px;
+	    padding-left: 70px;
+	    text-shadow: 1px 1px 3px #000;
 	}
 	
-	.notification-card {
-	    background-color: #f6e8d6;
-	    padding: 20px;
-	    margin: 20px auto;
+	.donation-form {
+	    background-color: #8A8D56;
+	    color: white;
 	    border-radius: 10px;
-	    box-shadow: 0 9px 14px rgba(0, 0, 0, 0.1);
-	    width: 60%;
+	    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	    padding: 30px;
+	    width: 500px;
+	    height: 500px;
+	    margin: 25px;
+	    margin-right: 70px;
+	}
+	
+	.preset-amounts {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	
+	.preset-amounts button {
+	    background-color: white;
+	    color: #6b6048;
+	    border: none;
+	    margin: 5px;
+	    margin-bottom: 15px;
+	    padding: 10px 20px;
+	    border-radius: 8px;
+	    font-size: 24px;
+	    cursor: pointer;
+	}
+	
+	.preset-amounts button:hover {
+	    background-color: #d9c5a1;
+	}
+	
+	.custom-amount {
+	    display: flex;
+	    align-items: center;
+	    font-size: 24px;
+	}
+	
+	.custom-amount span {
+	    background-color: #6b6048;
+	    color: white;
+	    padding: 5px 10px;
+	    border-radius: 5px 0 0 5px;
+	}
+	
+	.custom-amount input {
+	    flex: 1;
+	    padding: 10px;
+	    border: none;
+	    border-radius: 0 5px 5px 0;
+	    font-size: 24px;
+	}
+	
+	label {
+	    font-size: 20px;
+	    font-weight: bold;
+	    color: white;
+	    display: block;
+	    margin-bottom: 5px;
 	    text-align: left;
 	}
 	
-	/* Styling for Notifications heading */
-	.notification-container h1 {
-	    color: white;
-	    text-align: center;
-	    font-size: 48px;
-	    margin-bottom: 30px;
-	    font-weight: bold;
-	}
-		
-	.notification-card h2 {
-	    color: #333;
-	    margin-bottom: 10px;
-	}
-	
-	.notification-card p {
-	    color: #555;
+	select, input[type="text"] {
+	    width: 100%;
+	    padding: 10px;
+	    margin-bottom: 20px;
+	    border: 2px solid #6b6048;
+	    border-radius: 8px;
 	    font-size: 16px;
 	}
+		
+	.payment-icons img {
+	    height: 30px;
+	    margin: 5px;
+	}
+	
+	.donate-submit {
+	    background-color: #007BFF;
+	    color: white;
+	    border: none;
+	    padding: 10px 20px;
+	    border-radius: 8px;
+	    font-size: 24px;
+	    cursor: pointer;
+	}
+	
+	.donate-submit:hover {
+	    background-color: #0056b3;
+	}
+	
+	.modal {
+	    position: fixed;
+	    z-index: 1;
+	    left: 0;
+	    top: 0;
+	    width: 100%;
+	    height: 100%;
+	    overflow: auto;
+	    background-color: rgba(0, 0, 0, 0.4);
+	}
+	
+	.modal-content {
+	    background-color: #fefefe;
+	    margin: 15% auto;
+	    padding: 20px;
+	    border: 1px solid #888;
+	    width: 40%;
+	    border-radius: 10px;
+	    text-align: center;
+	    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+	    }
+	 
+	 .close {
+	    color: #aaa;
+	    float: right;
+	    font-size: 28px;
+	    font-weight: bold;
+	  }
+	  
+	  .close:hover, .close:focus {
+	    color: black;
+	    text-decoration: none;
+        cursor: pointer;
+	  }		

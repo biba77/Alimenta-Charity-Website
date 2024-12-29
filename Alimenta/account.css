@@ -1,8 +1,24 @@
-	body {
-	    font-family: Arial, sans-serif;
-	    margin: 0;
-	    padding: 0;
-	    background-color: #f4f4f4;
+	* {
+	   margin: 0;
+	   padding: 0;
+	   box-sizing: border-box;
+	}
+	
+	/* Body and Container Styling */
+	html, body {
+		height: 100%;
+	    font-family: 'Arial', sans-serif;
+	    background-color: #8A8D56;
+	    color: #333;
+	}
+	
+	.account-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 	}
 	
 	header {
@@ -136,45 +152,110 @@
 	    display: flex; /* Show dropdown menu on hover */
 	}
 	
-	/* Main content styles */
-	main {
-	    background-color: #8A8D56;
-	    min-height: 80vh;
-	    padding: 40px;
-	}
-	
-	.notification-container {
-	    background-color: #8A8D56;
+	/* Account Info Section */
+	.account-info {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
 	    padding: 20px;
+	    flex-grow: 1;
+	    background-color: #8A8D56;
 	    border-radius: 10px;
-	    text-align: center;
 	}
 	
-	.notification-card {
-	    background-color: #f6e8d6;
-	    padding: 20px;
-	    margin: 20px auto;
+	.details-card {
+	    background-color: #f7e2cc;
+	    padding: 60px;
 	    border-radius: 10px;
-	    box-shadow: 0 9px 14px rgba(0, 0, 0, 0.1);
-	    width: 60%;
-	    text-align: left;
+	    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	    text-align: center;
+	    width: 100%;
+	    max-width: 700px;
 	}
 	
-	/* Styling for Notifications heading */
-	.notification-container h1 {
-	    color: white;
-	    text-align: center;
-	    font-size: 48px;
-	    margin-bottom: 30px;
-	    font-weight: bold;
-	}
-		
-	.notification-card h2 {
+	.details-card h2 {
+	    margin-bottom: 20px;
 	    color: #333;
-	    margin-bottom: 10px;
 	}
 	
-	.notification-card p {
-	    color: #555;
-	    font-size: 16px;
+	.details-card form {
+	    display: flex;
+	    flex-direction: column;
+	    gap: 15px;
+	    margin-bottom: 20px;
 	}
+	
+	.details-card label {
+	    text-align: left;
+	    font-weight: bold;
+	    color: #333;
+	}
+	
+	.details-card input {
+	    padding: 10px;
+	    border-radius: 5px;
+	    border: 1px solid #ccc;
+	    background-color: #e8e8e8;
+	    font-size: 16px;
+	    color: #333;
+	    outline: none;
+	}
+	
+	.details-card input:disabled {
+	    background-color: #f0f0f0;
+	}
+	
+	.buttons {
+	    display: flex;
+	    justify-content: space-around;
+	    gap: 10px;
+	}
+	
+	.buttons .button {
+	    background-color: #bda77c;
+	    color: white;
+	    padding: 10px 20px;
+	    border: none;
+	    border-radius: 5px;
+	    cursor: pointer;
+	    font-weight: bold;
+	    transition: background-color 0.3s ease;
+	}
+	
+	.buttons .button:hover {
+	    background-color: #6b6048;
+	}	
+	    
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .modal-buttons {
+            margin-top: 20px;
+        }
+        .modal-buttons .button {
+            margin: 5px;
+            padding: 10px 20px;
+            background: #6b6048;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .modal-buttons .button:hover {
+            background: #5a4f3a;
+        }

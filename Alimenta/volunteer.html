@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volunteer Page</title>
+  <link rel="stylesheet" href="volunteer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <div class="logo">
+            <img src="Alimenta Logo.png" alt="Alimenta Logo">
+        </div>
+        <span class="brand-name">Alimenta</span>
+    </div>
+    <nav>
+        <a href="homepage.php">Home</a>
+        <a href="notifications.php">Notifications</a>
+        <a href="volunteer.php">Volunteer</a>
+        <a href="inquiry.php">Contact Us</a>
+        <button class="donate-button" onclick="window.location.href='donations.php'">Donate Now ></button>
+        <div class="profile-container">
+            <button class="profile">
+                <i class="fas fa-user-circle"></i> Profile
+            </button>
+            <div class="dropdown-menu">
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="account.php" style="width: 100%; text-align: center;">Account</a>
+            <a href="logout.php" style="width: 100%; text-align: center;">Logout</a>
+        <?php else: ?>
+            <a href="login.php" style="width: 100%; text-align: center;">Login</a>
+            <a href="signup.php" style="width: 100%; text-align: center;">Signup</a>
+        <?php endif; ?>
+		    </div>
+        </div>
+    </nav>
+</header>
+  
+  <section class="intro">
+    <div class="intro-text">
+      <h1>Want to Volunteer with Alimenta?</h1>
+      <p>Food banks, food pantries, and meal programs in Alimenta network are continuing to do what they do best - provide meals to starving south asians.
+		  Whether you sort and pack food or distribute food, there are a lot of volunteer opportunities available.</p>
+    </div>
+    <img src="happychildren.png" alt="Happy children" />
+  </section>
+
+  <section class="volunteer-opportunities">
+    <h2>Volunteer Opportunities</h2>
+    <div class="card-grid">
+      <div class="card">
+        <img src="cooking.png" alt="Cooking and meal prep">
+        <h3>Cooking and Meal Prep</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <div class="card">
+        <img src="packing.png" alt="Food sorting and packing">
+        <h3>Food Sorting and Packing</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <div class="card">
+        <img src="shopping.png" alt="Shopping assistance">
+        <h3>Shopping Assistance</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+      <div class="card">
+        <img src="delivery.png" alt="Home delivery driver">
+        <h3>Home Delivery Driver</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </div>
+  </section>
+
+<section class="volunteering-calendar">
+    <h2>Volunteering Calendar</h2>
+    <div class="volunteering-container">
+        <div class="volunteering-item">
+            <h3>Nov 2024</h3>
+            <p>Feeding  Hope in the Heart of Indonesia</p>
+            <button>Volunteer now</button>
+        </div>
+        <div class="volunteering-item">
+            <h3>Dec 2024</h3>
+            <p>Nourishing Lives Across Philippines</p>
+            <button>Volunteer now</button>
+        </div>
+        <div class="volunteering-item">
+            <h3>Jan 2025</h3>
+            <p>Serving Meals and Smiles in Malaysia</p>
+            <button>Volunteer now</button>
+        </div>
+        <div class="volunteering-item">
+            <h3>Feb 2025</h3>
+            <p>Bringing Relief to Thailand, One Meal at a Time</p>
+            <button>Volunteer now</button>
+        </div>
+                <div class="volunteering-item">
+            <h3>March 2025</h3>
+            <p>Empowering Communities Through Food in Vietnam</p>
+            <button>Volunteer now</button>
+        </div>
+        <div class="volunteering-item">
+            <h3>April 2025</h3>
+            <p>Supporting Sustainable Food Access in Laos</p>
+            <button>Volunteer now</button>
+        </div>
+        <div class="volunteering-item">
+            <h3>May 2025</h3>
+            <p>Delivering Meals to Myanmar’s Most Vulnerable</p>
+            <button>Volunteer now</button>
+        </div>
+        <div class="volunteering-item">
+            <h3>June 2025</h3>
+            <p>Uniting Cambodia in the Fight Against Hunger</p>
+            <button>Volunteer now</button>
+        </div>
+    </div>
+</section>
+
+<section class="sign-up-form">
+    <h2>Volunteering Sign Up Form</h2>
+    <form action="volunteer.php" method="POST">
+        <div class="form-row">
+            <div>
+                <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name"
+                    value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>" required>
+            </div>
+
+            <div>
+                <label for="last_name">Last Name</label>
+                <input type="text" id="last_name" name="last_name"
+                    value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>" required>
+            </div>
+        </div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email"
+            value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" required>
+
+        <label for="phone_number">Phone Number</label>
+        <input type="tel" id="phone_number" name="phone_number"
+            value="<?php if (isset($_POST['phone_number'])) echo $_POST['phone_number']; ?>" required>
+
+        <label for="country">Country of Volunteering Event</label>
+        <select id="country" name="country" onchange="updateEvents()" required>
+            <option value="">-- Select Country --</option>
+            <option>Malaysia</option>
+            <option>Indonesia</option>
+            <option>Philippines</option>
+            <option>Thailand</option>
+            <option>Vietnam</option>
+            <option>Laos</option>
+            <option>Myanmar</option>
+            <option>Cambodia</option>
+        </select>
+
+        <label for="event">Volunteering Event</label>
+        <select id="event" name="event" required>
+            <option value="">-- Select Event --</option>
+        </select>
+
+        <p>Are you 18 years old or older?</p>
+        <div class="radio-group">
+            <label><input type="radio" name="age" value="yes" required> Yes</label>
+            <label><input type="radio" name="age" value="no"> No</label>
+        </div>
+
+        <p>Preferred Area to Volunteer:</p>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="areas" value="Cooking and Meal Prep"> Cooking and Meal Prep</label>
+            <label><input type="checkbox" name="areas" value="Food Sorting and Packing"> Food Sorting and Packing</label>
+            <label><input type="checkbox" name="areas" value="Shopping Assistance"> Shopping Assistance</label>
+            <label><input type="checkbox" name="areas" value="Home Delivery Driver"> Home Delivery Driver</label>
+        </div>
+
+        <div class="terms">
+            <label><input type="checkbox" name="terms" value="1" required> You have read and agreed with our <a href="#">Terms & Conditions</a></label>
+        </div>
+
+        <button type="submit">Sign Up</button>
+    </form>
+</section>
+
+ <div id="messageModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <p id="modalMessage"></p>
+        <button id="modalButton" class="home-button">Return to Home</button>
+    </div>
+</div>
+
+<script>
+function updateEvents() {
+    const country = document.getElementById("country").value;
+    const eventDropdown = document.getElementById("event");
+    
+    // Clear existing options in the event dropdown
+    eventDropdown.innerHTML = '<option value="default">-- Select Event --</option>';
+    
+    // Define events for each country
+    const eventsByCountry = {
+        Malaysia: ["Serving Meals and Smiles in Malaysia"],
+        Indonesia: ["Feeding  Hope in the Heart of Indonesia"],
+        Philippines: ["Nourishing Lives Across Philippines"],
+        Thailand: ["Bringing Relief to Thailand, One Meal at a Time"],
+        Vietnam: ["Empowering Communities Through Food in Vietnam"],
+        Laos: ["Supporting Sustainable Food Access in Laos"],
+        Myanmar: ["Delivering Meals to Myanmar’s Most Vulnerable"],
+        Cambodia: ["Uniting Cambodia in the Fight Against Hunger"]
+    };
+    
+    // Add the corresponding events for the selected country
+    if (eventsByCountry[country]) {
+        eventsByCountry[country].forEach(event => {
+            const option = document.createElement("option");
+            option.value = event;
+            option.textContent = event;
+            eventDropdown.appendChild(option);
+        });
+    }
+}
+    function showModal(title, message, isSuccess) {
+        var modal = document.getElementById("messageModal");
+        document.getElementById("modalTitle").innerText = title;
+        document.getElementById("modalMessage").innerHTML = message;
+
+        var closeBtn = document.querySelector(".close");
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        };
+
+        var modalButton = document.getElementById("modalButton");
+        modalButton.onclick = function() {
+            if (isSuccess) {
+                window.location.href = "homepage.php"; // Redirect to homepage for success.
+            } else {
+                modal.style.display = "none"; // Close modal for errors.
+            }
+        };
+
+        modal.style.display = "block";
+    }
+</script>
+</body>
+</html>
